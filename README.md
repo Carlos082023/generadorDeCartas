@@ -1,12 +1,42 @@
-# React + Vite
+# 💌 Generador de Cartas de Amor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web interactiva para crear y compartir cartas de amor personalizadas.  
+Incluye diferentes estilos de cartas (romántica, poética, divertida), selección de colores y fotos aleatorias.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📸 Capturas de pantalla
 
-## Expanding the ESLint configuration
+![Pantalla principal](https://via.placeholder.com/600x400?text=Captura+de+Pantalla)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tecnologías
+
+- React 18
+- Vite
+- JavaScript (ES6+)
+- CSS
+- LocalStorage para guardar cartas
+
+---
+
+## ⚙️ Funcionalidades
+
+- Crear cartas de amor con nombre de destinatario y remitente.
+- Elegir entre diferentes estilos de carta: romántica, poética o divertida.
+- Seleccionar un color temático para la carta.
+- Ver y cargar cartas guardadas.
+- Compartir cartas usando la API de `navigator.share`.
+- Fotos aleatorias que acompañan cada carta.
+- Animaciones de corazones flotantes.
+
+---
+
+## 🚀 Instalación
+
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/Carlos082023/generadorDeCartas.git
+cd generadorDeCartas
