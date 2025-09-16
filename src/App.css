@@ -1,0 +1,464 @@
+   * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+
+   body {
+     font-family: 'Playfair Display', serif;
+     background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+     min-height: 100vh;
+     position: relative;
+     overflow-x: hidden;
+     color: #6d2c46;
+   }
+
+   body::before {
+     content: "";
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-image:
+       radial-gradient(#ff9eb0 1px, transparent 1px),
+       radial-gradient(#ff9eb0 1px, transparent 1px);
+     background-size: 40px 40px;
+     background-position: 0 0, 20px 20px;
+     opacity: 0.3;
+     z-index: -1;
+   }
+
+   .container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 30px 20px;
+     max-width: 1200px;
+     margin: 0 auto;
+   }
+
+   .title {
+     font-family: 'Dancing Script', cursive;
+     font-size: 3.5rem;
+     margin-bottom: 25px;
+     color: #d44d69;
+     text-align: center;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+     position: relative;
+     padding-bottom: 15px;
+   }
+
+   .title::after {
+     content: "";
+     position: absolute;
+     bottom: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 100px;
+     height: 3px;
+     background: linear-gradient(to right, #d44d69, #f8a0b0, #d44d69);
+     border-radius: 3px;
+   }
+
+   h2 {
+     font-size: 22px;
+     color: #8c3a57;
+     margin-bottom: 10px;
+   }
+
+   /* Estilo de la carta */
+   .card {
+     background-color: rgba(255, 255, 255, 0.95);
+     padding: 30px;
+     border-radius: 18px;
+     box-shadow: 0 10px 25px rgba(181, 65, 98, 0.15);
+     width: 500px;
+     margin-bottom: 30px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     border: 1px solid rgba(255, 182, 193, 0.5);
+     position: relative;
+     overflow: hidden;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+
+   .card::before {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 5px;
+     background: linear-gradient(to right, #ff9eb0, #d44d69, #ff9eb0);
+   }
+
+   .card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 15px 30px rgba(181, 65, 98, 0.2);
+   }
+
+   .input-group {
+     width: 100%;
+     margin-bottom: 20px;
+   }
+
+   .input-group label {
+     display: block;
+     margin-bottom: 8px;
+     font-weight: bold;
+     color: #8c3a57;
+     font-size: 18px;
+   }
+
+   .card input,
+   .card select,
+   .card button {
+     width: 100%;
+     padding: 14px;
+     margin: 8px 0;
+     border: 1px solid #f8a0b0;
+     border-radius: 10px;
+     font-size: 16px;
+     transition: all 0.3s ease;
+     font-family: 'Playfair Display', serif;
+   }
+
+   .card input:focus,
+   .card select:focus {
+     outline: none;
+     border-color: #d44d69;
+     box-shadow: 0 0 0 3px rgba(212, 77, 105, 0.2);
+   }
+
+   .card button {
+     background: linear-gradient(to right, #d44d69, #c93a5c);
+     color: white;
+     cursor: pointer;
+     font-weight: bold;
+     border: none;
+     transition: all 0.3s ease;
+     font-size: 18px;
+     position: relative;
+     overflow: hidden;
+   }
+
+   .card button::after {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: -100%;
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+     transition: 0.5s;
+   }
+
+   .card button:hover::after {
+     left: 100%;
+   }
+
+   .card button:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 7px 15px rgba(212, 77, 105, 0.4);
+   }
+
+   .secondary-btn {
+     background: linear-gradient(to right, #8c7f88, #6d6376) !important;
+   }
+
+   .action-buttons {
+     display: flex;
+     gap: 12px;
+     width: 100%;
+     margin-top: 15px;
+   }
+
+   .action-buttons button {
+     flex: 1;
+   }
+
+   /* Display de la carta generada */
+   .letter-display {
+     display: flex;
+     flex-direction: row;
+     font-size: 20px;
+     align-items: center;
+     justify-content: space-between;
+     max-width: 900px;
+     margin-top: 30px;
+     padding: 35px;
+     background: linear-gradient(135deg, rgba(255, 245, 245, 0.95) 0%, rgba(255, 230, 230, 0.95) 100%);
+     border-radius: 20px;
+     box-shadow: 0 10px 25px rgba(181, 65, 98, 0.15);
+     animation: fadeIn 0.5s ease;
+     border: 1px solid rgba(255, 182, 193, 0.5);
+     position: relative;
+   }
+
+   .letter-display::before {
+     content: "❤";
+     position: absolute;
+     top: -15px;
+     left: -15px;
+     font-size: 40px;
+     color: #d44d69;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+   }
+
+   .letter-content {
+     width: 60%;
+     padding-right: 25px;
+     position: relative;
+   }
+
+   .letter-content p {
+     line-height: 1.6;
+     margin-bottom: 20px;
+     font-size: 19px;
+   }
+
+   .photo-display {
+     position: relative;
+   }
+
+   .photo-display img {
+     width: 300px;
+     height: 200px;
+     object-fit: cover;
+     border-radius: 15px;
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+     transition: transform 0.3s ease;
+     border: 5px solid white;
+   }
+
+   .photo-display img:hover {
+     transform: scale(1.05);
+   }
+
+   .photo-display::before {
+     content: "";
+     position: absolute;
+     top: -10px;
+     left: -10px;
+     right: 10px;
+     bottom: 10px;
+     border: 2px solid #d44d69;
+     border-radius: 20px;
+     z-index: -1;
+     opacity: 0.5;
+   }
+
+   .letter-actions {
+     display: flex;
+     gap: 12px;
+     margin-top: 25px;
+   }
+
+   .letter-actions button {
+     padding: 12px 18px;
+     border-radius: 8px;
+     border: none;
+     cursor: pointer;
+     font-weight: bold;
+     transition: all 0.3s ease;
+     font-family: 'Playfair Display', serif;
+   }
+
+   .share-btn {
+     background: linear-gradient(to right, #5a8de1, #4a76c9) !important;
+     color: white;
+   }
+
+   .letter-actions button:hover {
+     opacity: 0.9;
+     transform: translateY(-3px);
+     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+   }
+
+   /* Corazones flotantes */
+   .floating-hearts {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     pointer-events: none;
+     z-index: -1;
+   }
+
+   .floating-heart {
+     position: absolute;
+     font-size: 24px;
+     opacity: 0;
+     color: #ff9eb0;
+     animation: float 8s ease-in infinite;
+   }
+
+   @keyframes float {
+     0% {
+       transform: translateY(100vh) rotate(0deg);
+       opacity: 0.7;
+     }
+
+     100% {
+       transform: translateY(-100px) rotate(360deg);
+       opacity: 0;
+     }
+   }
+
+   /* Cartas guardadas */
+   .saved-letters {
+     background-color: rgba(255, 255, 255, 0.95);
+     border-radius: 15px;
+     padding: 25px;
+     margin-top: 25px;
+     width: 500px;
+     max-height: 300px;
+     overflow-y: auto;
+     box-shadow: 0 8px 20px rgba(181, 65, 98, 0.15);
+     border: 1px solid rgba(255, 182, 193, 0.5);
+   }
+
+   .saved-letters h2 {
+     text-align: center;
+     margin-bottom: 20px;
+     color: #d44d69;
+     font-family: 'Dancing Script', cursive;
+     font-size: 28px;
+   }
+
+   .saved-letter-item {
+     display: flex;
+     justify-content: space-between;
+     padding: 12px 15px;
+     margin: 12px 0;
+     background-color: #fff5f5;
+     border-radius: 8px;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     border: 1px solid rgba(255, 182, 193, 0.3);
+   }
+
+   .saved-letter-item:hover {
+     background-color: #ffe6e6;
+     transform: translateX(5px);
+     box-shadow: 0 5px 10px rgba(181, 65, 98, 0.1);
+   }
+
+   /* Animaciones */
+   @keyframes fadeIn {
+     from {
+       opacity: 0;
+       transform: translateY(20px);
+     }
+
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+
+   @keyframes hearts {
+     0% {
+       transform: translateY(0px) scale(1);
+       opacity: 1;
+     }
+
+     50% {
+       transform: translateY(-50px) scale(1.2);
+       opacity: 0.7;
+     }
+
+     100% {
+       transform: translateY(-100px) scale(1);
+       opacity: 0;
+     }
+   }
+
+   .heart {
+     position: absolute;
+     color: #ff4d6d;
+     animation: hearts 2s infinite;
+     font-size: 2rem;
+   }
+
+   /* Footer */
+   .footer {
+     margin-top: 40px;
+     text-align: center;
+     color: #8c3a57;
+     font-size: 14px;
+     opacity: 0.8;
+   }
+
+   /* Media Queries para adaptabilidad */
+   @media (max-width: 600px) {
+     .container {
+       padding: 15px;
+     }
+
+     .title {
+       font-size: 2.5rem;
+     }
+
+     .card,
+     .saved-letters {
+       width: 95%;
+       padding: 20px;
+     }
+
+     .letter-display {
+       flex-direction: column;
+       padding: 25px;
+     }
+
+     .letter-content {
+       width: 100%;
+       padding-right: 0;
+       margin-bottom: 25px;
+     }
+
+     .photo-display img {
+       width: 100%;
+       height: auto;
+     }
+
+     .letter-actions {
+       flex-direction: column;
+     }
+
+     .action-buttons {
+       flex-direction: column;
+     }
+   }
+
+   @media (max-width: 900px) {
+     .container {
+       padding: 20px;
+     }
+
+     .title {
+       font-size: 3rem;
+     }
+
+     .card,
+     .saved-letters {
+       width: 90%;
+     }
+
+     .letter-display {
+       flex-direction: column;
+     }
+
+     .letter-content {
+       width: 100%;
+       padding-right: 0;
+     }
+
+     .photo-display img {
+       width: 100%;
+       height: 250px;
+     }
+   }
